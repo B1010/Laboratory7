@@ -10,8 +10,9 @@ namespace TestOfMethod
             string text = "Мама мыла раму";
             for(int i=0; i < 3; i++)
             {
-                Console.WriteLine(lab6.exe6_textRevers(text)[i]);
+                Console.Write("{0} ", lab6.exe6_textRevers(text)[i]);
             }
+            Console.ReadLine();
             /* 
              * Самый банальный пример работы подзагрузки библиотеки Method. 
              * Имеет в себе 8 методов. В примере используется метод №6
