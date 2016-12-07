@@ -21,7 +21,6 @@ namespace Method
             }
             return count;
         }
-
         public static int exe3_famFinder(string ifam, string jfam, string lfam, string search)
         {
             int sovpad = 0;
@@ -72,7 +71,6 @@ namespace Method
             int[] alphabet = { 0, 0 };
             int icount = 0, jcount = 0;
             
-
             foreach (char itempfor in mainstring)
             {
                 if (ifilter.Contains(itempfor))
@@ -119,6 +117,31 @@ namespace Method
                     Console.Write(abc[index - 26]);
                 }
             }
+        }
+        public static int[] exe8_Digit(string text)
+        {
+            char[] mainstring = text.ToCharArray();
+            char[] jfilter = { '!', '"', ';', ':', '.', ',', '-', '/', '\\', '=', '+', '_', '?', '[', ']', '{', '}', '(', ')', '*' };
+            char[] ifilter = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            int[] digits = { 0, 0 };
+            int icount = 0, jcount = 0;
+
+            foreach (char itempfor in mainstring)
+            {
+                if (ifilter.Contains(itempfor))
+                    icount++;
+            }
+
+            foreach (char jtempfor in mainstring)
+            {
+                if (jfilter.Contains(jtempfor))
+                    jcount++;
+            }
+
+            digits[0] = icount;
+            digits[1] = jcount;
+
+            return digits;
         }
     }
 }
