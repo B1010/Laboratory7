@@ -175,7 +175,7 @@ namespace Method
 
             return phoneNumber_arr[2];
         }
-        public static string[] exe12_USAtoRUSdata(string dateUSA)
+        public static string[] exe12_USAtoRUSdate(string dateUSA)
         {
             string[] dateRUS = { "", "", "" };
             char[] separators = { '/' };
