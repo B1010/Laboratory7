@@ -143,5 +143,49 @@ namespace Method
 
             return digits;
         }
+        public static int exe9_substring(string textFind, string substring)
+        {
+            int index = 0;
+
+            if (textFind.IndexOf(substring) > -1)
+            {
+                index = textFind.IndexOf(substring) + 1;
+                return index;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        public static string exe10_wordtodash(string text)
+        {
+            char[] separators = { ',', ' ', ';' };
+            string[] text_arr = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            foreach (string item in text_arr)
+            {
+                if (item.Length < 3) text = text.Replace(item, "-");
+            }
+            return text;
+        }
+        public static string exe11_ATE(string phoneNumber)
+        {
+            char[] separators = { ',', ' ', ';', '-', '+' };
+            string[] phoneNumber_arr = phoneNumber.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            return phoneNumber_arr[2];
+        }
+        public static string[] exe12_USAtoRUSdata(string dateUSA)
+        {
+            string[] dateRUS = { "", "", "" };
+            char[] separators = { '/' };
+            string[] dateUSA_arr = dateUSA.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+            dateRUS[0] = dateUSA_arr[1];
+            dateRUS[1] = dateUSA_arr[0];
+            dateRUS[2] = dateUSA_arr[2];
+
+            return dateRUS[];
+        }
     }
 }
