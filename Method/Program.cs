@@ -185,7 +185,7 @@ namespace Method
             dateRUS[1] = dateUSA_arr[0];
             dateRUS[2] = dateUSA_arr[2];
 
-            return dateRUS[];
+            return dateRUS;
         }
     }
 }

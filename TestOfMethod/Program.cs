@@ -8,7 +8,7 @@ namespace TestOfMethod
         static void Main()
         {
             string text = "Мама мыла раму";
-            for(int i=0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 Console.Write("{0} ", lab6.exe6_textRevers(text)[i]);
             }
