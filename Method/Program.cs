@@ -175,11 +175,11 @@ namespace Method
 
             return phoneNumber_arr[2];
         }
-        public static string[] exe12_USAtoRUSdate(string dateUSA)
+        public static int[] exe12_USAtoRUSdate(string dateUSA)
         {
-            string[] dateRUS = { "", "", "" };
+            int[] dateRUS = { 0, 0, 0 };
             char[] separators = { '/' };
-            string[] dateUSA_arr = dateUSA.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            int[] dateUSA_arr = dateUSA.Split(separators, StringSplitOptions.RemoveEmptyEntries).Select(n => Convert.ToInt32(n)).ToArray(); ;
 
             dateRUS[0] = dateUSA_arr[1];
             dateRUS[1] = dateUSA_arr[0];
