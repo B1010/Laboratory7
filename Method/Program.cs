@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace Method
 {
@@ -20,6 +21,29 @@ namespace Method
                     count++;
             }
             return count;
+        }
+        public static void exe2_charFinder(string text, string charfind)
+        {
+            int k = 0;
+            k = text.IndexOf(charfind);
+
+            if (k != -1)
+            {
+                for (int i = 0; i <= text.Length - 1; i++)
+                {
+                    if (text.Substring(i, 1) == charfind)
+                    {
+                        if (i == 0) Console.WriteLine("Последующий символ: " + text.Substring(i + 1, 1));
+                        if (i == text.Length - 1) Console.WriteLine("Предыдущий символ: " + text.Substring(i - 1, 1));
+                        if ((i != 0) && (i != text.Length - 1))
+                        {
+                            Console.WriteLine("Предыдущий символ: " + text.Substring(i - 1, 1));
+                            Console.WriteLine("Последующий символ: " + text.Substring(i + 1, 1));
+                        }
+                    }
+                }
+            }
+            else Console.WriteLine("Такого символа нет");
         }
         public static int exe3_famFinder(string ifam, string jfam, string lfam, string search)
         {
@@ -70,7 +94,7 @@ namespace Method
             char[] ifilter = { 'а', 'э', 'о', 'ы', 'и', 'у', 'я', 'е', 'ё', 'ю' };
             int[] alphabet = { 0, 0 };
             int icount = 0, jcount = 0;
-            
+
             foreach (char itempfor in mainstring)
             {
                 if (ifilter.Contains(itempfor))
@@ -186,6 +210,69 @@ namespace Method
             dateRUS[2] = dateUSA_arr[2];
 
             return dateRUS;
+        }
+        public static string[] exe13_timeStringandStringBuilder()
+        {
+            string[] timedelay = { "", "" };
+
+            DateTime time0 = DateTime.Now;
+            strA();
+            TimeSpan time0_0 = DateTime.Now - time0;
+
+            DateTime time1 = DateTime.Now;
+            strB();
+            TimeSpan time1_1 = DateTime.Now - time1;
+
+            timedelay[0] = time0_0.ToString();
+            timedelay[0] = time1_1.ToString();
+
+            return timedelay;
+        }
+        private static void strA()
+        {
+            String strA = "";
+            for (int i = 0; i < 50000; i++)
+            {
+                strA = strA + i;
+            }
+        }
+        private static void strB()
+        {
+            var strB = new StringBuilder();
+            for (int i = 0; i < 10; i++)
+            {
+                strB.Append(i);
+            }
+            string str = strB.ToString();
+        }
+        public static StringBuilder exe14_TextLineAdder(string text, int length, char replace)
+        {
+            StringBuilder newtext = new StringBuilder(text, length);
+
+            if (length < text.Length)
+            {
+                newtext.Remove(length, newtext.Length - length);
+            }
+            else
+                for (int i = 0; i <= (length - text.Length); i++)
+                {
+                    newtext.Insert(0, replace);
+                }
+            return newtext;
+        }
+        public static StringBuilder exe15_texdCrupt(string pred, int key)
+        {
+            StringBuilder crupted = new StringBuilder(pred);
+
+            for (int i = 0; i <= pred.Length; i++)
+            {
+                crupted.Insert(0, key);
+                if (pred.Length < crupted.Length)
+                {
+                    crupted.Remove(pred.Length, crupted.Length - pred.Length);
+                }
+            }
+            return crupted;
         }
     }
 }
