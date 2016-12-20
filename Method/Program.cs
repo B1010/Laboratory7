@@ -93,22 +93,18 @@ namespace Method
             char[] jfilter = { 'б', 'п', 'в', 'ф', 'д', 'т', 'з', 'с', 'ж', 'ш', 'ч', 'ц', 'щ', 'г', 'к', 'х', 'м', 'н', 'л', 'р' };
             char[] ifilter = { 'а', 'э', 'о', 'ы', 'и', 'у', 'я', 'е', 'ё', 'ю' };
             int[] alphabet = { 0, 0 };
-            int icount = 0, jcount = 0;
 
             foreach (char itempfor in mainstring)
             {
                 if (ifilter.Contains(itempfor))
-                    icount++;
+                    alphabet[0]++;
             }
 
             foreach (char jtempfor in mainstring)
             {
                 if (jfilter.Contains(jtempfor))
-                    jcount++;
+                    alphabet[1]++;
             }
-
-            alphabet[0] = icount;
-            alphabet[1] = jcount;
 
             return alphabet;
         }
@@ -148,22 +144,18 @@ namespace Method
             char[] jfilter = { '!', '"', ';', ':', '.', ',', '-', '/', '\\', '=', '+', '_', '?', '[', ']', '{', '}', '(', ')', '*' };
             char[] ifilter = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
             int[] digits = { 0, 0 };
-            int icount = 0, jcount = 0;
 
             foreach (char itempfor in mainstring)
             {
                 if (ifilter.Contains(itempfor))
-                    icount++;
+                    digits[0]++;
             }
 
             foreach (char jtempfor in mainstring)
             {
                 if (jfilter.Contains(jtempfor))
-                    jcount++;
+                    digits[1]++;
             }
-
-            digits[0] = icount;
-            digits[1] = jcount;
 
             return digits;
         }
