@@ -22,9 +22,10 @@ namespace Method
             }
             return count;
         }
-        public void exe2_charFinder(string text, string charfind)
+        public string[] exe2_charFinder(string text, string charfind)
         {
-            int k = 0;
+            int k = 0, d = 0;
+            string[] chartoreturn = new string[100];
             k = text.IndexOf(charfind);
 
             if (k != -1)
@@ -33,17 +34,24 @@ namespace Method
                 {
                     if (text.Substring(i, 1) == charfind)
                     {
-                        if (i == 0) Console.WriteLine("Последующий символ: " + text.Substring(i + 1, 1));
-                        if (i == text.Length - 1) Console.WriteLine("Предыдущий символ: " + text.Substring(i - 1, 1));
+                        d++;
+                        if (i == 0)
+                        {
+                            chartoreturn[d] = text.Substring(i + 1, 1);// Последующий символ
+                        }
+                        if (i == text.Length - 1)
+                        {
+                            chartoreturn[d + 1] = text.Substring(i - 1, 1);// Предыдущий символ
+                        }
                         if ((i != 0) && (i != text.Length - 1))
                         {
-                            Console.WriteLine("Предыдущий символ: " + text.Substring(i - 1, 1));
-                            Console.WriteLine("Последующий символ: " + text.Substring(i + 1, 1));
+                            chartoreturn[d] = text.Substring(i - 1, 1); // Предыдущий символ
+                            chartoreturn[d + 1] = text.Substring(i + 1, 1); // Последующий символ
                         }
                     }
                 }
             }
-            else Console.WriteLine("Такого символа нет");
+            return chartoreturn;
         }
         public int exe3_famFinder(string ifam, string jfam, string lfam, string search)
         {
