@@ -9,7 +9,7 @@ namespace Method
     }
     public class lab6
     {
-        public static int exe1_spaceFinder(string istring)
+        public int exe1_spaceFinder(string istring)
         {
             char[] jstring = istring.ToCharArray();
             char[] filter = { ' ' };
@@ -22,7 +22,7 @@ namespace Method
             }
             return count;
         }
-        public static void exe2_charFinder(string text, string charfind)
+        public void exe2_charFinder(string text, string charfind)
         {
             int k = 0;
             k = text.IndexOf(charfind);
@@ -45,7 +45,7 @@ namespace Method
             }
             else Console.WriteLine("Такого символа нет");
         }
-        public static int exe3_famFinder(string ifam, string jfam, string lfam, string search)
+        public int exe3_famFinder(string ifam, string jfam, string lfam, string search)
         {
             int sovpad = 0;
             char[] separators = { ',', ' ', ';' };
@@ -80,14 +80,14 @@ namespace Method
             }
             return sovpad;
         }
-        public static int exe4_wordsFinder(string offer)
+        public int exe4_wordsFinder(string offer)
         {
             char[] separators = { ',', ' ', ';', '.' };
 
             string[] offer_words = offer.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             return offer_words.Length;
         }
-        public static int[] exe5_cyrAlphabet(string text)
+        public int[] exe5_cyrAlphabet(string text)
         {
             char[] mainstring = text.ToCharArray();
             char[] jfilter = { 'б', 'п', 'в', 'ф', 'д', 'т', 'з', 'с', 'ж', 'ш', 'ч', 'ц', 'щ', 'г', 'к', 'х', 'м', 'н', 'л', 'р' };
@@ -108,7 +108,7 @@ namespace Method
 
             return alphabet;
         }
-        public static string[] exe6_textRevers(string words)
+        public string[] exe6_textRevers(string words)
         {
             char[] separators = { ',', ' ', ';' };
             string[] iwords = words.Split(separators, StringSplitOptions.RemoveEmptyEntries);
@@ -116,12 +116,12 @@ namespace Method
 
             for (int i = 0; i < iwords.Length; i++)
             {
-                iwords[i] = iwords[i].Remove(iwords[i].Length - 1, 1) + (string)(iwords[i].Remove(0, iwords[i].Length - 1)).ToUpper();
-                iwords[i] = (string)(iwords[i].Remove(1, iwords[i].Length - 1)).ToUpper() + iwords[i].Remove(0, 1);
+                iwords[i] = iwords[i].Remove(iwords[i].Length - 1, 1) + (iwords[i].Remove(0, iwords[i].Length - 1)).ToUpper();
+                iwords[i] = (iwords[i].Remove(1, iwords[i].Length - 1)).ToUpper() + iwords[i].Remove(0, 1);
             }
             return iwords;
         }
-        public static void exe7_wordReverse(string word)
+        public void exe7_wordReverse(string word)
         {
             string abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -138,7 +138,7 @@ namespace Method
                 }
             }
         }
-        public static int[] exe8_Digit(string text)
+        public int[] exe8_Digit(string text)
         {
             char[] mainstring = text.ToCharArray();
             char[] jfilter = { '!', '"', ';', ':', '.', ',', '-', '/', '\\', '=', '+', '_', '?', '[', ']', '{', '}', '(', ')', '*' };
@@ -159,7 +159,7 @@ namespace Method
 
             return digits;
         }
-        public static int exe9_substring(string textFind, string substring)
+        public int exe9_substring(string textFind, string substring)
         {
             int index = 0;
 
@@ -173,7 +173,7 @@ namespace Method
                 return 0;
             }
         }
-        public static string exe10_wordtodash(string text)
+        public string exe10_wordtodash(string text)
         {
             char[] separators = { ',', ' ', ';' };
             string[] text_arr = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
@@ -184,14 +184,14 @@ namespace Method
             }
             return text;
         }
-        public static string exe11_ATE(string phoneNumber)
+        public string exe11_ATE(string phoneNumber)
         {
             char[] separators = { ',', ' ', ';', '-', '+' };
             string[] phoneNumber_arr = phoneNumber.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
             return phoneNumber_arr[2];
         }
-        public static int[] exe12_USAtoRUSdate(string dateUSA)
+        public int[] exe12_USAtoRUSdate(string dateUSA)
         {
             int[] dateRUS = { 0, 0, 0 };
             char[] separators = { '/' };
@@ -203,7 +203,7 @@ namespace Method
 
             return dateRUS;
         }
-        public static string[] exe13_timeStringandStringBuilder()
+        public string[] exe13_timeStringandStringBuilder()
         {
             string[] timedelay = { "", "" };
 
@@ -220,7 +220,7 @@ namespace Method
 
             return timedelay;
         }
-        private static void strA()
+        private void strA()
         {
             String strA = "";
             for (int i = 0; i < 50000; i++)
@@ -228,7 +228,7 @@ namespace Method
                 strA = strA + i;
             }
         }
-        private static void strB()
+        private void strB()
         {
             var strB = new StringBuilder();
             for (int i = 0; i < 10; i++)
@@ -237,7 +237,7 @@ namespace Method
             }
             string str = strB.ToString();
         }
-        public static StringBuilder exe14_TextLineAdder(string text, int length, char replace)
+        public StringBuilder exe14_TextLineAdder(string text, int length, char replace)
         {
             StringBuilder newtext = new StringBuilder(text, length);
 
@@ -252,7 +252,7 @@ namespace Method
                 }
             return newtext;
         }
-        public static StringBuilder exe15_texdCrupt(string pred, int key)
+        public StringBuilder exe15_texdCrupt(string pred, int key)
         {
             StringBuilder crupted = new StringBuilder(pred);
 
