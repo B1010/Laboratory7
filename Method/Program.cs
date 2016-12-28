@@ -307,16 +307,7 @@ namespace Method
     {
         public int exe1_spaceFinder(string istring)
         {
-            char[] jstring = istring.ToCharArray();
-            char[] filter = { ' ' };
-            int count = 0;
-
-            foreach (char tempfor in jstring)
-            {
-                if (filter.Contains(tempfor))
-                    count++;
-            }
-            return count;
+            return istring.Split(' ').Length - 1;
         }
         public string[] exe2_charFinder(string text, string charfind)
         {
@@ -349,37 +340,17 @@ namespace Method
             }
             return chartoreturn;
         }
-        public int exe3_famFinder(string ifam, string jfam, string lfam, string search)
+        public int exe3_famFinder(string[] family, string search)
         {
-            int sovpad = 0;
-            char[] separators = { ',', ' ', ';' };
+            int sovpad = 0, g = 0, x = -1;
 
-            string[] ifam_words = ifam.ToUpper().Split(separators, StringSplitOptions.RemoveEmptyEntries);
-            string[] jfam_words = jfam.ToUpper().Split(separators, StringSplitOptions.RemoveEmptyEntries);
-            string[] lfam_words = lfam.ToUpper().Split(separators, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string word in ifam_words)
+            foreach (string word in family)
             {
-                if (search.ToUpper().Equals(word))
+                while (g != -1)
                 {
+                    g = word.IndexOf(search.ToUpper(), x + 1);
+                    x = g;
                     sovpad++;
-                    break;
-                }
-            }
-            foreach (string word in jfam_words)
-            {
-                if (search.ToUpper().Equals(word))
-                {
-                    sovpad++;
-                    break;
-                }
-            }
-            foreach (string word in lfam_words)
-            {
-                if (search.ToUpper().Equals(word))
-                {
-                    sovpad++;
-                    break;
                 }
             }
             return sovpad;
@@ -425,43 +396,43 @@ namespace Method
             }
             return iwords;
         }
-        public void exe7_wordReverse(string word)
+        public string[] exe7_wordReverse(string word)
         {
             string abc = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string[] result = new string[word.Length];
 
             for (int i = 0; i < word.Length; i++)
             {
                 var index = abc.IndexOf(word[i]);
                 if (index + 1 <= 26)
                 {
-                    Console.Write(abc[index + 26]);
+                    result[i] = abc[index + 26].ToString();
                 }
                 else
                 {
-                    Console.Write(abc[index - 26]);
+                    result[i] = abc[index - 26].ToString();
                 }
             }
+            return result;
         }
         public int[] exe8_Digit(string text)
         {
             char[] mainstring = text.ToCharArray();
-            char[] jfilter = { '!', '"', ';', ':', '.', ',', '-', '/', '\\', '=', '+', '_', '?', '[', ']', '{', '}', '(', ')', '*' };
-            char[] ifilter = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-            int[] digits = { 0, 0 };
+            int[] result = new int[1];
 
             foreach (char itempfor in mainstring)
             {
-                if (ifilter.Contains(itempfor))
-                    digits[0]++;
+                if (char.IsDigit(itempfor))
+                    result[0]++;
             }
 
             foreach (char jtempfor in mainstring)
             {
-                if (jfilter.Contains(jtempfor))
-                    digits[1]++;
+                if (char.IsSymbol(jtempfor))
+                    result[1]++;
             }
 
-            return digits;
+            return result;
         }
         public int exe9_substring(string textFind, string substring)
         {
@@ -490,16 +461,24 @@ namespace Method
         }
         public string exe11_ATE(string phoneNumber)
         {
-            char[] separators = { ',', ' ', ';', '-', '+' };
+            char[] separators = { ',', ' ', ';', '-', '+', '(', ')' };
             string[] phoneNumber_arr = phoneNumber.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
-            return phoneNumber_arr[2];
+            if (phoneNumber_arr.Length == 5)
+            {
+                return phoneNumber_arr[2];
+            }
+
+            if (phoneNumber_arr.Length == 3)
+            {
+                return phoneNumber_arr[0];
+            }
         }
         public int[] exe12_USAtoRUSdate(string dateUSA)
         {
             int[] dateRUS = { 0, 0, 0 };
             char[] separators = { '/' };
-            int[] dateUSA_arr = dateUSA.Split(separators, StringSplitOptions.RemoveEmptyEntries).Select(n => Convert.ToInt32(n)).ToArray(); ;
+            int[] dateUSA_arr = dateUSA.Split(separators, StringSplitOptions.RemoveEmptyEntries).Select(n => Convert.ToInt32(n)).ToArray();
 
             dateRUS[0] = dateUSA_arr[1];
             dateRUS[1] = dateUSA_arr[0];
@@ -510,36 +489,34 @@ namespace Method
         public string[] exe13_timeStringandStringBuilder()
         {
             string[] timedelay = { "", "" };
-
-            DateTime time0 = DateTime.Now;
-            strA();
-            TimeSpan time0_0 = DateTime.Now - time0;
-
-            DateTime time1 = DateTime.Now;
-            strB();
-            TimeSpan time1_1 = DateTime.Now - time1;
-
-            timedelay[0] = time0_0.ToString();
-            timedelay[0] = time1_1.ToString();
+            
+            timedelay[0] = strA();
+            timedelay[0] = strB();
 
             return timedelay;
         }
-        private void strA()
+        private string strA()
         {
+            DateTime time0 = DateTime.Now;
             String strA = "";
             for (int i = 0; i < 50000; i++)
             {
                 strA = strA + i;
             }
+            TimeSpan time0_0 = DateTime.Now - time0;
+            return time0_0.ToString();
         }
-        private void strB()
+        private string strB()
         {
+            DateTime time1 = DateTime.Now;
             var strB = new StringBuilder();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 50000; i++)
             {
                 strB.Append(i);
             }
             string str = strB.ToString();
+            TimeSpan time1_1 = DateTime.Now - time1;
+            return time1_1.ToString();
         }
         public StringBuilder exe14_TextLineAdder(string text, int length, char replace)
         {
@@ -556,19 +533,33 @@ namespace Method
                 }
             return newtext;
         }
-        public StringBuilder exe15_texdCrupt(string pred, int key)
+        public string[] exe15_texdCrupt(string text, int key)
         {
-            StringBuilder crupted = new StringBuilder(pred);
+            int outofrangeunicode = (int)'0';
+            string[] result = new string[2];
 
-            for (int i = 0; i <= pred.Length; i++)
+            StringBuilder init0 = new StringBuilder(text);
+            StringBuilder init1 = new StringBuilder(text);
+            for (int count = 0; count < text.Length; count++)
             {
-                crupted.Insert(0, key);
-                if (pred.Length < crupted.Length)
-                {
-                    crupted.Remove(pred.Length, crupted.Length - pred.Length);
-                }
+                init0.Insert(0, key);
             }
-            return crupted;
+            if (text.Length < init0.Length)
+            {
+                init0.Remove(text.Length, init0.Length - text.Length);
+            }
+            StringBuilder init2 = new StringBuilder(text);
+            StringBuilder init3 = new StringBuilder(text);
+            for (int count = 0; count < text.Length; count++)
+            {
+                init3[count] = (char)((int)init2[count] + ((int)init0[count] - outofrangeunicode));
+            }
+            for (int count = 0; count < text.Length; count++)
+            {
+                init1[count] = (char)((int)init3[count] - ((int)init0[count] - outofrangeunicode));
+            }
+            result[0] = init3.ToString();
+            result[1] = init1.ToString();
         }
     }
 }
