@@ -238,10 +238,6 @@ namespace Method
         }
         public int[,] exe10_AtoT(int[,] iarray)
         {
-            Random randomforarray = new Random();
-            Console.Write("Введите размер матрицы: ");
-            int arraysize = int.Parse(Console.ReadLine());
-
             for (int i = 0; i < iarray.GetLength(0); i++)
             {
                 for (int j = i; j < iarray.GetLength(1); j++)
@@ -473,6 +469,7 @@ namespace Method
             {
                 return phoneNumber_arr[0];
             }
+            return 0.ToString();
         }
         public int[] exe12_USAtoRUSdate(string dateUSA)
         {
@@ -488,7 +485,7 @@ namespace Method
         }
         public string[] exe13_timeStringandStringBuilder()
         {
-            string[] timedelay = { "", "" };
+            string[] timedelay = new string[1];
             
             timedelay[0] = strA();
             timedelay[0] = strB();
@@ -560,6 +557,8 @@ namespace Method
             }
             result[0] = init3.ToString();
             result[1] = init1.ToString();
+
+            return result;
         }
     }
 }
