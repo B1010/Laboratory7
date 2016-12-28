@@ -10,14 +10,6 @@ namespace Method
         {
             int[] minamdmax = new int[1];
 
-            for (int i = 0; i < iarray.Length; i++)
-            {
-                for (int j = 0; j < iarray.Length; j++)
-                {
-                    iarray[i, j] = random.Next(10);
-                }
-            }
-
             minamdmax[0] = iarray[0, 0];
             for (int i = 0; i < iarray.GetLength(0); i++)
             {
